@@ -14,13 +14,17 @@ export const initSocket = (httpServer: HttpServer) => {
   })
 
   io.on('connection', async (socket) => {
-    console.log('New connection: ', socket.id)
+    const admin = socket.handshake.query.admin === 'true'
+    if (admin) socket.join('admin')
+    else socket.join('client')
 
     socket.on('connect_error', (err) => {
       console.log('Connection error:', err.message)
     })
 
     socket.on('disconnect', (reason) => {
+      if (admin) socket.leave('admin')
+      else socket.leave('client')
       console.log(`User disconnected: ${reason}`)
     })
   })

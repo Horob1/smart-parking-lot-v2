@@ -6,10 +6,12 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosWarning } from "react-icons/io";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("/");
 
   const tabs = [
@@ -41,7 +43,14 @@ const Sidebar = () => {
             <span className="text-sm">{tab.name}</span>
           </Link>
         ))}
-        <div className="flex items-center p-3 transition-all duration-200 text-[#747bff] hover:bg-gray-200 hover:text-gray-700 cursor-pointer font-semibold">
+        <div
+          onClick={() => {
+            localStorage.removeItem("token");
+            navigate("/login");
+            toast.success("Đăng xuất thành công!");
+          }}
+          className="flex items-center p-3 transition-all duration-200 text-[#747bff] hover:bg-gray-200 hover:text-gray-700 cursor-pointer font-semibold"
+        >
           <span className="text-lg mr-3">
             <FaSignOutAlt />
           </span>

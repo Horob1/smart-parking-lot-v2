@@ -1,8 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Sidebar from "../components/Sidebar";
+import { useEffect, useMemo } from "react";
 
 function App() {
+  const navigate = useNavigate();
+  const isAuthenticated = useMemo(
+    () => localStorage.getItem("token") !== null,
+    []
+  );
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <>
       <div className="flex w-full">
