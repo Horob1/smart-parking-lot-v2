@@ -14,3 +14,17 @@ export interface ILog {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IUser {
+  _id: string;
+  phone: string;
+  name: string;
+  cccd: string;
+  cardId?: ICard;
+}
+
+export interface ICard {
+  _id: string;
+  uid: string;
+  type: string;
+}
