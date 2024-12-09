@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { instance } from "./../utils/axios";
+import  instance  from "./../utils/axios";
 import toast from "react-hot-toast";
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");

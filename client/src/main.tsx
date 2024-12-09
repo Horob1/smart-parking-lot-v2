@@ -6,12 +6,38 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SocketProvider } from "./Socket.tsx";
 import { LoginLayout } from "./Layout/LoginLayout.tsx";
 import Login from "./pages/Login.tsx";
+import { Home } from "./pages/Home.tsx";
+import { User } from "./pages/User.tsx";
+import { Card } from "./pages/Card.tsx";
+import { Log } from "./pages/Log.tsx";
+import { Warning } from "./pages/Warning.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [],
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "users",
+        element: <User />,
+      },
+      {
+        path: "cards",
+        element: <Card />,
+      },
+      {
+        path: "logs",
+        element: <Log/>,
+      },
+      {
+        path: "warnings",
+        element: <Warning/>,
+      }
+    ],
   },
   {
     path: "/login",

@@ -23,6 +23,10 @@ const LogSchema: Schema = new Schema<ILogModel>(
       ref: 'Users',
       required: false,
       default: null
+    },
+    licensePlate: {
+      type: String,
+      required: true
     }
   },
   {

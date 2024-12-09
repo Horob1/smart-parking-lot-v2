@@ -101,3 +101,14 @@ export const getSlots = async (req: Request, res: Response, next: NextFunction) 
     next(error)
   }
 }
+
+export const getCar = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const cars = await Log.find({
+      paid: false
+    })
+    res.status(200).json(cars)
+  } catch (error) {
+    next(error)
+  }
+}

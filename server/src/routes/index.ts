@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import userRouter from './user.routes'
 import cardRouter from './card.routes'
-import { getLogs, getSlots, getWarnings, login } from '~/controllers/common.controller'
+import { getCar, getLogs, getSlots, getWarnings, login } from '~/controllers/common.controller'
 import auth from '~/middlewares/auth.middleware'
 
 const router = Router()
@@ -12,5 +12,6 @@ router.use('/cards', cardRouter)
 router.get('/logs', getLogs)
 router.get('/slots', getSlots)
 router.get('/warnings', getWarnings)
+router.get('/cards', getCar)
 
 export default router
