@@ -15,8 +15,13 @@ export const initSocket = (httpServer: HttpServer) => {
 
   io.on('connection', async (socket) => {
     const admin = socket.handshake.query.admin === 'true'
-    if (admin) socket.join('admin')
-    else socket.join('client')
+    if (admin) {
+      socket.join('admin')
+      console.log('Admin connection!')
+    } else {
+      socket.join('client')
+      console.log('Client connection!')
+    }
 
     socket.on('connect_error', (err) => {
       console.log('Connection error:', err.message)
